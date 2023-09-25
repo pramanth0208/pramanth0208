@@ -1,0 +1,650 @@
+10.
+<!DOCTYPE html >
+<html>
+<script type='text/javascript'>
+function formValidator()
+{
+var usn = document.getElementById('req1');
+alert(usn.value);
+if(isCorrect(usn))
+{
+return true;
+}
+return false;
+}
+function isCorrect(elem1)
+{
+alphaExp1=/[1-4][A-Z][A-Z][0-9][0-9][A-Z][A-Z][0-9][0-9][0-9]$/
+if(elem1.value.length == 0)
+{
+alert("US Number is empty");
+elem1.focus();
+return false;
+}
+else if(!elem1.value.match(alphaExp1))
+{
+alert("US Number should be in DAADDAADDD format");
+elem1.focus();
+return false;
+}
+alert("US Number IS CORRECT");
+return true;
+}
+</script>
+<body>
+<form onsubmit='return formValidator()'>
+Enter your USN. in DAADDAADDD format : <input type='text' id='req1'/>
+<input type='submit' value='Check Field' />
+</form>
+</body>
+</html>
+
+
+9a.
+<html>
+<body>
+<script>
+function display(){
+var x="You have clicked";
+var d=new Date();
+var date=d.getDate();
+var month=d.getMonth();
+month++;
+var year=d.getFullYear();
+document.getElementById("dis").value=date+"/"+month+"/"+year;
+}
+</script>
+<form>
+<input type="text" id="dis" /><br />
+<input type="button" value="Display Date" onclick="display()" />
+</form>
+<body>
+</html>
+
+9b.
+<html>
+
+<head><title> Multiplication Table </title></head>
+
+<body>
+
+<script type="text/javascript">
+
+var n=prompt("Enter positive value for n: "," ");
+
+if(!isNaN(n)) {
+
+var table="";
+
+var number="";
+
+for(i=1;i<=10;i++) {
+
+number = n * i;
+
+table += n + " * " + i + " = " + number + "\n";
+
+}
+
+alert(table);
+
+}
+
+else {
+
+alert("Enter positive value");
+
+n=prompt("Enter positive value for n: "," ");
+
+}
+
+document.write(n+" table values displayed using alert ..<br />");
+
+</script>
+
+</body>
+
+</html>
+
+
+8a.
+<!DOCTYPE
+
+HTML> <html>
+
+<head>
+
+<style> table,tr, td
+
+{
+
+border: solid black; width: 33%;
+
+text-align: center;
+
+border-collapse: collapse; background- color:lightblue;
+
+}
+
+table { margin: auto; }
+
+</style>
+
+<script>
+
+document.write( "<table><tr><th colspan='3'> NUMBERS FROM 0 TO 10 WITH THEIR SQUARES 
+
+AND CUBES </th></tr>" );
+
+document.write( "<tr><td>Number</td><td>Square</td><td>Cube</td></tr>" ); 
+
+for(var n=0; n<=10; n++)
+
+{
+
+document.write( "<tr><td>" + n + "</td><td>" + n*n + "</td><td>" + n*n*n + "</td></tr>" ) ;
+
+}
+
+document.write( "</table>" ) ;
+
+</script>
+
+</head>
+
+</html>
+
+8b.
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<center>
+
+<p id="demo"/>
+
+</center>
+
+<script>
+
+var var1=setInterval(inTimer,1000);
+
+var size=5;
+
+var ids=document.getElementById("demo");
+
+function inTimer(){
+
+size+=5;
+
+ids.innerHTML="TEXT GROWING";
+
+ids.setAttribute("style","font-size:"+size+"px; color:red");
+
+if(size>=50)
+
+{
+
+clearInterval(var1);
+
+var var2=setInterval(deTimer,1000);
+
+}
+
+}
+
+function deTimer(){
+
+size-=5;
+
+ids.innerHTML="TEXT SHRINKING";
+
+ids.setAttribute("style","font-size:"+size+"px; color:blue");
+
+if(size<=5)
+
+{
+
+clearInterval(var1);
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
+
+
+7a.
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+<script type="text/javascript">
+
+var str = prompt("Enter the Input"," ");
+
+if(!(isNaN(str)))
+
+{
+
+var num,rev=0,remainder; 
+
+num = parseInt(str);
+
+while(num!=0) 
+
+{
+
+remainder = num%10;
+
+num = parseInt(num/10);
+
+rev = rev * 10 + remainder;
+
+}
+
+alert("Reverse of "+str+" is "+rev);
+
+}
+else
+
+{
+
+str = str.toUpperCase();
+
+for(var i = 0; i < str.length; i++) 
+
+{ 
+
+var chr = str.charAt(i);
+
+if(chr == 'A' || chr == 'E' || chr == 'I' || chr == 'O' || chr == 'U')break;
+
+}
+
+if( i < str.length )
+
+alert("The position of the left most vowel is "+(i+1));
+
+else
+
+alert("No vowel found in the entered string");
+
+}
+
+</script>
+
+</body>
+
+</html>
+
+7b.
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<style>
+
+table, td, th
+
+{
+
+border: 1px solid black; width: 33%;
+
+text-align: center; background-color: DarkGray; border-collapse:collapse;
+
+}
+
+table { margin: auto; } input { text-align:right; }
+
+</style>
+
+<script type="text/javascript"> function calc(clicked_id)
+
+{
+
+var val1 = parseFloat(document.getElementById("value1").value);
+
+var val2 = parseFloat(document.getElementById("value2").value);
+
+if(isNaN(val1)||isNaN(val2))
+
+alert("ENTER VALID NUMBER");
+
+else if(clicked_id=="add") document.getElementById("answer").value=val1+val2;
+
+else if(clicked_id=="sub") document.getElementById("answer").value=val1-
+
+val2;
+
+else if(clicked_id=="mul") document.getElementById("answer").value=val1*val2;
+
+else if(clicked_id=="div")
+
+document.getElementById("answer").value=val1/val2;
+
+}
+
+function cls()
+
+{
+
+value1.value="0"; 
+
+value2.value="0";
+
+answer.value="";
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<table>
+
+<tr><th colspan="4"> SIMPLE CALCULATOR </th></tr>
+
+<tr><td>value1</td><td><input type="text" id="value1" value="0"/></td> <td>value2</td><td><input 
+
+type="text" id="value2" value="0"/> </td></tr> <tr><td><input type="button" value="Addition" id = 
+
+"add" onclick="calc(this.id)"/></td>
+
+<td><input type="button" value="Subtraction" id = "sub" onclick="calc(this.id)"/></td>
+
+<td><input type="button" value="Multiplication" id = "mul"
+
+onclick="calc(this.id)"/></td>
+
+<td><input type="button" value="Division" id ="div" onclick="calc(this.id)"/></td></tr>
+
+<tr><td>Answer:</td><td> <input type="text" id="answer" value="" disabled/></td>
+
+<td colspan="2"><input type="button" value="CLEAR ALL" onclick="cls()"/></td> </tr>
+
+</table>
+
+</body></html>
+
+
+6a.
+<html>
+
+<head>
+
+<title>WT Lab manual program no. 3</title>
+
+</head>
+
+<style>
+
+h1
+
+{
+
+color: red;
+
+text-align: center;
+
+}
+
+.textbox1
+
+{
+
+color: blue;
+
+font-size: 30px;
+
+font-weight: bold;
+
+}
+
+</style>
+
+<body>
+
+<center>
+
+<h1> Select the country name to find its capital</h1>
+
+<form name="myform">
+
+Select Country <select name="country" id="sbox1" onClick="myFunction()" required>
+
+<option value=""></option>
+
+<option value="NEW DELHI">INDIA</option>
+
+<option value="CANBERRA">AUSTRALIA</option>
+
+<option value="WASHINGTON D.C">AMERICA</option>
+
+<option value="LONDON">UNITEDKINGDOM</option>
+
+<option value="BERLIN">GERMANY</option>
+
+</select><br><br>
+
+Capital <input type="text" class="textbox1" id="sbox2">
+
+</form>
+
+</center>
+
+<script>
+
+function myFunction()
+
+{ var a=document.getElementById("sbox1").value;
+
+document.getElementById("sbox2").value=a; }
+
+</script> 
+
+</body>
+
+</html>
+
+6b.
+<html> 
+
+<head> 
+
+<title> Fibonacci Series in JavaScript </title> 
+
+</head> 
+
+<body> 
+
+<script> 
+
+// declaration of the variables 
+
+var n1 = 0, n2 = 1, next_num, i; 
+
+var num = parseInt (prompt (" Enter the limit for Fibonacci Series ")); 
+
+document.write( "Fibonacci Series: "); 
+
+for ( i = 1; i <= num; i++) 
+
+{ document.write (" <br> " + n1); // print the n1 
+
+ next_num = n1 + n2; // sum of n1 and n2 into the next_num 
+
+ 
+
+ n1 = n2; // assign the n2 value into n2 
+
+ n2 = next_num; // assign the next_num into n2 
+
+} 
+</script> 
+</body> 
+</html>
+
+
+
+
+5.
+p,table,li,{
+
+font-family: "lucida calligraphy", arial, 'sans serif';
+
+margin-left: 10pt;
+
+}
+
+p { word-spacing: 5px; }
+
+body { background-color:rgb(200,255,205); }
+
+p,li,td { font-size: 75%;}
+
+td { padding: 0.5cm; }
+
+th {
+
+text-align:center;
+
+font-size: 85%;
+
+}
+
+h1, h2, h3, hr {color:#483d8b;}
+
+table
+
+{
+
+border-style: outset;
+
+background-color: rgb(100,255,105);
+
+}
+
+li {list-style-type: lower-roman;}
+
+span
+
+{
+color:blue;
+
+background-color:pink;
+
+font-size: 29pt;
+
+font-style: italic;
+
+font-weight: bold;
+
+}
+
+LAB5.html
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="Lab5.css" />
+
+<title> Lab program5 </title>
+
+</head>
+
+<body>
+
+<h1>This header is 36 pt</h1>
+
+<h2>This header is blue</h2>
+
+<p>This paragraph has a left margin of 50 pixels</p>
+
+<table border="4" width="5%"> <!-- table with colour name &code -->
+
+<tr>
+
+<th width="204">Colour Name </th>
+
+<th>Hexadecimal code</th>
+
+</tr>
+
+<tr>
+
+<td width="204">Black</td>
+
+<td>000000</td>
+</tr>
+
+<tr>
+
+<td width="204">Silver</td>
+
+<td>C0C0C0</td>
+
+</tr>
+
+<tr>
+
+<td width="204">Gray</td>
+
+<td>808080</td>
+
+</tr>
+
+<tr>
+
+<td width="204">White</td>
+
+<td>FFFFFF</td>
+
+</tr>
+
+</table>
+
+<hr> <!-- horizontal line -->
+
+<h3>Programming Languages</h3>
+
+<ol> <!-- ordered list -->
+
+<li> C Programming</li>
+
+<li> Object Oriented Programming </li>
+
+<li> Python Programming</li>
+
+</ol>
+
+<hr> <!-- horizontal line -->
+
+<h3>Span Element</h3>
+
+<p>The span tag is an <span>inline tag </span>used to mark up a <span>part of atext</span>or part 
+
+of document.</p>
+
+</p>
+
+</body>
+
+</html>
