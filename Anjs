@@ -1,0 +1,499 @@
+1)
+<html ng-app="nameApp">
+
+<head>
+
+<title>AngularJS Full Name Example</title>
+
+<script src="index.js"></script>
+
+</head>
+
+<body>
+
+<div ng-controller="nameCtrl">
+
+First Name:
+
+<input type="text" ng-model="firstName" placeholder="Enter your first name" />
+
+<br />
+
+<br />
+
+Last Name:
+
+<input type="text" ng-model="lastName" placeholder="Enter your last name" />
+
+<br />
+
+<br />
+
+<button ng-click="displayFullName()">Display Full Name</button>
+
+<h1>Full Name is: {{ fullName }}</h1>
+
+</div>
+
+<script>
+
+angular.module("nameApp", []).controller("nameCtrl", function ($scope) {
+
+$scope.firstName = "Raj";
+
+$scope.lastName = "Kumar";
+
+$scope.displayFullName = function () {
+
+$scope.fullName = $scope.firstName + " " + $scope.lastName;
+
+};
+
+});
+
+</script>
+
+</body>
+
+</html>
+
+
+
+2)
+<html ng-app="shoppingApp">
+
+<head>
+
+<title>AngularJS Shopping List</title>
+
+<script src="index.js"></script>
+
+</head>
+
+<body ng-controller="shoppingCtrl">
+
+<h2>Shopping List</h2>
+
+<table>
+
+<tr ng-repeat="item in shoppingItems">
+
+<td>{{ item }}</td>
+
+<td><button ng-click="removeItem($index)">Remove</button></td>
+
+</tr>
+
+</table>
+
+<input type="text" ng-model="newItem" placeholder="Add a new item">
+
+<button ng-click="addItem()">Add Item</button>
+
+<script>
+
+angular.module('shoppingApp', [])
+
+.controller('shoppingCtrl', function ($scope) {
+
+$scope.shoppingItems = ['Apples', 'Bananas', 'Bread', 'Milk'];
+
+$scope.addItem = function () {
+
+if ($scope.newItem) {
+
+$scope.shoppingItems.push($scope.newItem);
+
+$scope.newItem = '';
+
+}
+
+};
+
+$scope.removeItem = function (index) {
+
+$scope.shoppingItems.splice(index, 1);
+
+};
+
+});
+
+</script>
+
+</body>
+
+</html>
+
+
+3)
+<html ng-app="calculatorApp">
+
+<head>
+
+<title>AngularJS Calculator</title>
+
+<script src="index.js"></script>
+
+</head>
+
+<body ng-controller="calculatorController">
+
+<h2>Simple Calculator</h2>
+
+Enter Number 1:
+
+<input type="number" ng-model="num1" /> &nbsp;
+
+Select Operator:
+
+<select ng-model="operator">
+
+<option value="+">Add</option>
+
+<option value="-">Subtract</option>
+
+<option value="*">Multiply</option>
+
+<option value="/">Divide</option>
+
+</select>&nbsp;
+
+Enter Number 2:
+
+<input type="number" ng-model="num2" />
+
+<button ng-click="calculate()">Calculate</button>
+
+<p ng-show="result !== undefined">Result: {{ result }}</p>
+
+<script>
+
+var app = angular.module('calculatorApp', []);
+
+app.controller('calculatorController', function ($scope) {
+
+$scope.calculate = function () {
+
+switch ($scope.operator) {
+
+case '+':
+
+$scope.result = $scope.num1 + $scope.num2;
+
+break;
+
+case '-':
+
+$scope.result = $scope.num1 - $scope.num2;
+
+break;
+
+case '*':
+
+$scope.result = $scope.num1 * $scope.num2;
+
+break;
+
+case '/':
+
+if ($scope.num2 !== 0) {
+
+$scope.result = $scope.num1 / $scope.num2;
+
+} else {
+
+$scope.result = 'Cannot divide by zero';
+
+}
+
+break;
+}
+
+};
+
+});
+
+</script>
+
+</body>
+
+</html>
+
+
+4)
+<html ng-app="mathApp">
+
+<head>
+
+<title>AngularJS Math Operations</title>
+
+<script src="index.js"></script>
+
+</head>
+
+<body ng-controller="mathController">
+
+<h2>Math Operations</h2>
+
+Enter a Number:
+
+<input type="number" ng-model="inputNumber" />
+
+<button ng-click="calculateFactorial()">Calculate Factorial</button>
+
+<button ng-click="calculateSquare()">Calculate Square</button>
+
+<p ng-show="factorialResult !== undefined">Factorial:{{factorialResult }}</p>
+
+<p ng-show="squareResult !== undefined">Square: {{ squareResult }}</p>
+
+<script>
+
+var app = angular.module('mathApp', []);
+
+app.controller('mathController', function ($scope) {
+
+$scope.calculateFactorial = function () {
+
+if ($scope.inputNumber >= 0) {
+
+$scope.factorialResult = factorial($scope.inputNumber);
+
+} else {
+
+$scope.factorialResult = 'Cannot calculate factorial for negative numbers';
+
+}
+
+};
+
+$scope.calculateSquare = function () {
+
+$scope.squareResult = $scope.inputNumber * $scope.inputNumber;
+
+};
+
+function factorial(n) {
+
+if (n == 0 || n == 1) {
+
+return 1;
+
+} else {
+
+return n * factorial(n - 1);
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
+
+
+5)
+<html ng-app="studentApp">
+
+<head>
+
+<title>AngularJS Student Details</title>
+
+<script src="index.js"></script>
+
+</head>
+
+<body ng-controller="studentController">
+
+<h2>Student Details</h2>
+
+Student Name:
+
+<input type="text" ng-model="name" />
+
+CGPA:
+
+<input type="number" ng-model="cgpa" ng-min="1" ng-max="10" />
+
+<button ng-click="addStudent()">Add Student</button>
+
+<p>Total Students: {{ students.length }}</p>
+
+<ul>
+
+<li ng-repeat="student in students">
+
+{{ student.name }} - CGPA: {{ student.cgpa }}
+
+</li>
+
+</ul>
+
+<script>
+
+var app = angular.module('studentApp', []);
+
+app.controller('studentController', function ($scope) {
+
+$scope.students = [];
+
+$scope.addStudent = function () {
+
+if ($scope.name && $scope.cgpa) {
+
+$scope.students.push({
+
+name: $scope.name, cgpa: $scope.cgpa
+
+});
+
+$scope.name = '';
+
+$scope.cgpa = '';
+
+}
+
+};
+
+});
+
+</script>
+
+</body>
+
+</html>
+
+
+6)
+<!DOCTYPE html>
+
+<html ng-app="todoApp">
+
+<head>
+
+<title>AngularJS Todo List</title>
+
+<script src="index.js"></script>
+
+</head>
+
+<body ng-controller="todoController">
+
+<h1>Todo List</h1>
+
+<form ng-submit="addTask()">
+
+Task:
+
+<input type="text" ng-model="newTask" required>
+
+<button type="submit">Add Task</button>
+
+</form>
+
+<br>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Task</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr ng-repeat="task in tasks">
+
+<td>{{ task }}</td>
+
+<td>
+
+<button ng-click="editTask($index)">Edit</button>
+
+<button ng-click="deleteTask($index)">Delete</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div ng-if="editingTaskIndex !== null">
+
+<h2>Edit Task</h2>
+
+Task:
+
+<input type="text" ng-model="tasks" required>
+
+<br>
+
+<button ng-click="saveEdit()">Save</button>
+
+<button ng-click="cancelEdit()">Cancel</button>
+
+</div>
+
+<script>
+
+var app = angular.module('todoApp', []);
+app.controller('todoController', function ($scope) {
+
+$scope.tasks = [
+
+'Task 1',
+
+'Task 2',
+
+'Task 3' ];
+
+$scope.newTask = '';
+
+$scope.editingTaskIndex = null;
+
+$scope.addTask = function () {
+
+$scope.tasks.push($scope.newTask);
+
+$scope.newTask = '';
+
+};
+
+$scope.editTask = function (index) {
+
+var updatedTask = prompt('Enter updated task:');
+
+if (updatedTask !== null) {
+
+$scope.tasks.splice(index, 1, updatedTask);
+
+}
+
+};
+
+$scope.deleteTask = function (index) {
+
+$scope.tasks.splice(index, 1);
+
+};
+
+});
+
+</script>
+
+</body>
+
+</html>
